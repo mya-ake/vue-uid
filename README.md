@@ -43,8 +43,8 @@ e.g.
 ```JavaScript
 import Vue from 'vue';
 import VueUid from 'vue-uid';
- 
-Vue.use(VueUID, {
+
+Vue.use(VueUid, {
   name: 'uid',
 });
 ```
@@ -63,4 +63,12 @@ export default {
   },
 };
 </script>
+```
+
+## Reset UID
+
+```JavaScript
+import { uid } from 'vue-uid';
+
+uid.reset();
 ```
