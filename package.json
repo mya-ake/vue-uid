@@ -38,7 +38,8 @@
     "dist"
   ],
   "keywords": [
-    "Vue.js",
-    "uid"
+    "vue.js",
+    "uid",
+    "vue-uid"
   ]
 }
