@@ -72,3 +72,7 @@ import { uid } from 'vue-uid';
 
 uid.reset();
 ```
+
+## For Nuxt.js
+
+[nuxt-uid-module](https://github.com/mya-ake/nuxt-uid-module)
