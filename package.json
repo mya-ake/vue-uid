@@ -1,11 +1,20 @@
 {
   "name": "vue-uid",
   "version": "0.1.0",
-  "private": true,
+  "description": "Unique ID for Vue.js component.",
+  "main": "dist/vue-uid.common.js",
+  "unpkg": "dist/vue-uid.umd.min.js",
+  "repository": "https://github.com/mya-ake/vue-uid.git",
+  "bugs": {
+    "url": "https://github.com/mya-ake/vue-uid/issues"
+  },
+  "author": "mya-ake <make.app.ts@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name vue-uid src/index.js",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "release": "standard-version"
   },
   "dependencies": {
     "vue": "^2.5.17"
@@ -22,6 +31,14 @@
     "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
+    "standard-version": "^4.4.0",
     "vue-template-compiler": "^2.5.17"
-  }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "Vue.js",
+    "uid"
+  ]
 }

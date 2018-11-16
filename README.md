@@ -1,34 +1,66 @@
 # vue-uid
 
-## Project setup
-```
-yarn install
+Unique ID for Vue.js component.
+
+## Install
+
+```bash
+$ yarn add vue-uid
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
+```JavaScript
+import Vue from 'vue';
+import VueUid from 'vue-uid';
+ 
+Vue.use(VueUid);
 ```
 
-### Run your tests
-```
-yarn run test
+## Usage
+
+```HTML
+<template>
+  <input v-bind:id="`input-${$_uid}`" />
+</template>
+
+<script>
+export default {
+  mounted() {
+    const uid = this.$_uid;
+    console.log(uid); // 1 (Number)
+  },
+};
+</script>
 ```
 
-### Lints and fixes files
-```
-yarn run lint
+## Option
+
+### name
+
+Change property name.
+
+e.g.
+
+```JavaScript
+import Vue from 'vue';
+import VueUid from 'vue-uid';
+ 
+Vue.use(VueUID, {
+  name: 'uid',
+});
 ```
 
-### Run your unit tests
-```
-yarn run test:unit
-```
+when
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```HTML
+<template>
+  <input v-bind:id="`input-${uid}`" />
+</template>
+
+<script>
+export default {
+  mounted() {
+    const uid = this.uid; // change 
+  },
+};
+</script>
+```
