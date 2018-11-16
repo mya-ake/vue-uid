@@ -1,12 +1,15 @@
+import Uid from './uid';
+
+export const uid = new Uid();
+
 function install(Vue, { name = '$_uid' } = {}) {
   if (install.installed) return;
   install.installed = true;
 
-  let uid = 0;
   Vue.mixin({
     beforeCreate() {
-      this[name] = uid;
-      ++uid;
+      this[name] = uid.number;
+      uid.increment();
     },
   });
 }
