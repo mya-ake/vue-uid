@@ -71,7 +71,10 @@ export default {
 
 ## Option
 
-### name
+### `name` (option)
+
+- type: `String`
+- default: `$_uid`
 
 Change property name.
 
