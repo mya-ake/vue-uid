@@ -69,7 +69,7 @@ export default {
 </script>
 ```
 
-## Option
+## Options
 
 ### `name` (option)
 
@@ -107,7 +107,9 @@ export default {
 
 ## Public API
 
-### Reset UID
+### `reset()`
+
+Rest UID count.
 
 ```JavaScript
 import { uid } from 'vue-uid';
@@ -115,7 +117,11 @@ import { uid } from 'vue-uid';
 uid.reset();
 ```
 
-### setName for mixin
+### `setName(name: String)`
+
+Same as name option.
+This method is for mixin.
+
 
 ```JavaScript
 import { uid } from 'vue-uid';
