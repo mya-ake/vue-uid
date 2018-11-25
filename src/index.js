@@ -1,9 +1,15 @@
 import { uidManager, mixin } from './mixin';
 
+// mixin
 export const vueUidMixin = mixin;
+
+// Public API
 export const uid = {
   reset() {
     uidManager.reset();
+  },
+  setName(name) {
+    uidManager.name = name;
   },
 };
 
