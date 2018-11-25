@@ -33,14 +33,25 @@ Use with component
 
 ```HTML
 <template>
-  <input v-bind:id="`input-${$_uid}`" />
+  <div>
+    <div>
+      <label v-bind:for="`input-${$_uid}`">Name</label>
+      <input v-bind:id="`input-${$_uid}`" />
+    </div>
+    or
+    <div>
+      <label v-bind:for="id">Name</label>
+      <input v-bind:id="id" />
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  mounted() {
-    const uid = this.$_uid;
-    console.log(uid); // 1 (Number)
+  computed: {
+    id() {
+      return `input-${this.$_uid}`;  // e.g. input-1
+    },
   },
 };
 </script>
@@ -93,16 +104,28 @@ when
 
 ```HTML
 <template>
-  <input v-bind:id="`input-${uid}`" />
+  <div>
+    <div>
+      <label v-bind:for="`input-${uid}`">Name</label>
+      <input v-bind:id="`input-${uid}`" />
+    </div>
+    or
+    <div>
+      <label v-bind:for="id">Name</label>
+      <input v-bind:id="id" />
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  mounted() {
-    const uid = this.uid; // changed
+  computed: {
+    id() {
+      // change property name
+      return `input-${this.uid}`;  // e.g. input-1
+    },
   },
 };
-</script>
 ```
 
 ## Public API
