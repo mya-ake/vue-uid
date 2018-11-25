@@ -1,16 +1,19 @@
-import Uid from './uid';
+import { uidManager, mixin } from './mixin';
 
-export const uid = new Uid();
+export const vueUidMixin = mixin;
+export const uid = {
+  reset() {
+    uidManager.reset();
+  },
+};
 
 function install(Vue, { name = '$_uid' } = {}) {
   if (install.installed) return;
   install.installed = true;
 
+  uidManager.name = name;
   Vue.mixin({
-    beforeCreate() {
-      this[name] = uid.number;
-      uid.increment();
-    },
+    mixins: [mixin],
   });
 }
 
