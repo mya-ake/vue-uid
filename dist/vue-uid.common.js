@@ -87,24 +87,13 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "230e":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("d3f4");
-var document = __webpack_require__("7726").document;
-// typeof document.createElement is 'object' in old IE
-var is = isObject(document) && isObject(document.createElement);
-module.exports = function (it) {
-  return is ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-
-/***/ "2887":
+/***/ "0712":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
+var es6_function_name = __webpack_require__("7f7f");
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
 function _classCallCheck(instance, Constructor) {
@@ -128,22 +117,27 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
 }
-// CONCATENATED MODULE: ./src/uid.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return uid_Uid; });
+// CONCATENATED MODULE: ./src/uid-manager.js
 
 
 
-var uid_Uid =
+
+var uid_manager_UidManager =
 /*#__PURE__*/
 function () {
-  function Uid() {
-    _classCallCheck(this, Uid);
+  function UidManager() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref$name = _ref.name,
+        name = _ref$name === void 0 ? '$_uid' : _ref$name;
 
+    _classCallCheck(this, UidManager);
+
+    this._name = name;
     this._number;
     this.reset();
   }
 
-  _createClass(Uid, [{
+  _createClass(UidManager, [{
     key: "increment",
     value: function increment() {
       ++this._number;
@@ -154,15 +148,49 @@ function () {
       this._number = 0;
     }
   }, {
-    key: "number",
+    key: "name",
+    get: function get() {
+      return this._name;
+    },
+    set: function set(name) {
+      this._name = name;
+    }
+  }, {
+    key: "uid",
     get: function get() {
       return this._number;
     }
   }]);
 
-  return Uid;
+  return UidManager;
 }();
 
+
+// CONCATENATED MODULE: ./src/mixin.js
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return uidManager; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mixin; });
+
+
+var uidManager = new uid_manager_UidManager();
+var mixin = {
+  beforeCreate: function beforeCreate() {
+    this[uidManager.name] = uidManager.uid;
+    uidManager.increment();
+  }
+};
+
+/***/ }),
+
+/***/ "230e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+var document = __webpack_require__("7726").document;
+// typeof document.createElement is 'object' in old IE
+var is = isObject(document) && isObject(document.createElement);
+module.exports = function (it) {
+  return is ? document.createElement(it) : {};
+};
 
 
 /***/ }),
@@ -274,13 +302,24 @@ module.exports = !__webpack_require__("79e5")(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return uid; });
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return vueUidMixin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return uid; });
 /* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7f7f");
 /* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _uid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("2887");
+/* harmony import */ var _mixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("0712");
 
+ // mixin
 
-var uid = new _uid__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]();
+var vueUidMixin = _mixin__WEBPACK_IMPORTED_MODULE_1__[/* mixin */ "a"]; // Public API
+
+var uid = {
+  reset: function reset() {
+    _mixin__WEBPACK_IMPORTED_MODULE_1__[/* uidManager */ "b"].reset();
+  },
+  setName: function setName(name) {
+    _mixin__WEBPACK_IMPORTED_MODULE_1__[/* uidManager */ "b"].name = name;
+  }
+};
 
 function install(Vue) {
   var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
@@ -289,11 +328,9 @@ function install(Vue) {
 
   if (install.installed) return;
   install.installed = true;
+  _mixin__WEBPACK_IMPORTED_MODULE_1__[/* uidManager */ "b"].name = name;
   Vue.mixin({
-    beforeCreate: function beforeCreate() {
-      this[name] = uid.number;
-      uid.increment();
-    }
+    mixins: [_mixin__WEBPACK_IMPORTED_MODULE_1__[/* mixin */ "a"]]
   });
 }
 
@@ -399,6 +436,7 @@ if (typeof window !== 'undefined') {
 var src = __webpack_require__("b635");
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+/* concated harmony reexport vueUidMixin */__webpack_require__.d(__webpack_exports__, "vueUidMixin", function() { return src["c" /* vueUidMixin */]; });
 /* concated harmony reexport uid */__webpack_require__.d(__webpack_exports__, "uid", function() { return src["b" /* uid */]; });
 
 
