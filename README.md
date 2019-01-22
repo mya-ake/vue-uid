@@ -155,3 +155,11 @@ uid.setName('uid');
 ## For Nuxt.js
 
 [nuxt-uid-module](https://github.com/mya-ake/nuxt-uid-module)
+
+## Contribution
+
+If you find a bug or want to contribute to the code or documentation, you can help by submitting an [issue](https://github.com/mya-ake/vue-uid/issues) or a [pull request](https://github.com/mya-ake/vue-uid/pulls).
+
+## License
+
+[MIT](https://github.com/mya-ake/vue-uid/blob/master/LICENSE)
