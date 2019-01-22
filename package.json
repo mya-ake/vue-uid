@@ -14,10 +14,7 @@
     "build": "vue-cli-service build --target lib --name vue-uid src/index.js",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "release": "standard-version"
-  },
-  "dependencies": {
-    "vue": "^2.5.17"
+    "release": "yarn test:unit && yarn build && np"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.1.1",
@@ -31,7 +28,8 @@
     "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
-    "standard-version": "^4.4.0",
+    "np": "^4.0.1",
+    "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17"
   },
   "files": [
