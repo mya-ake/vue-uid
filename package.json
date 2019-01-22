@@ -1,6 +1,6 @@
 {
   "name": "vue-uid",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Unique ID for Vue.js component.",
   "main": "dist/vue-uid.common.js",
   "unpkg": "dist/vue-uid.umd.min.js",
