@@ -1,5 +1,8 @@
 # vue-uid
 
+[![npm version](https://badge.fury.io/js/vue-uid.svg)](https://badge.fury.io/js/vue-uid)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 Unique ID for Vue.js component.
 
 
