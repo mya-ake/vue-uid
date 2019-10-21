@@ -4,6 +4,7 @@
   "description": "Unique ID for Vue.js component.",
   "main": "dist/vue-uid.common.js",
   "unpkg": "dist/vue-uid.umd.min.js",
+  "types": "types/index.d.ts",
   "repository": "https://github.com/mya-ake/vue-uid.git",
   "bugs": {
     "url": "https://github.com/mya-ake/vue-uid/issues"
@@ -13,7 +14,9 @@
   "scripts": {
     "build": "vue-cli-service build --target lib --name vue-uid src/index.js",
     "lint": "vue-cli-service lint",
+    "test": "run-s test:*",
     "test:unit": "vue-cli-service test:unit",
+    "test:types": "tsc -p types/test",
     "release": "yarn test:unit && yarn build && np"
   },
   "devDependencies": {
@@ -29,13 +32,16 @@
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
     "np": "^5.1.0",
+    "typescript": "^3.6.4",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.5.17"
   },
   "peerDependencies": {
     "vue": "^2.5.17"
   },
   "files": [
-    "dist"
+    "dist",
+    "types"
   ],
   "keywords": [
     "vue.js",
