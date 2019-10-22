@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/vue-uid.svg)](https://badge.fury.io/js/vue-uid)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![CI Status](https://github.com/mya-ake/vue-uid/workflows/Main%20Workflow/badge.svg)
 
 Unique ID for Vue.js component.
 
